@@ -1,8 +1,5 @@
 class TimesheetsController < ApplicationController
-  def new
-  end
-
-  def create
+  def home
   end
 
   def index

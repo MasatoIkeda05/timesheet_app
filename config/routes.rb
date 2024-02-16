@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'timesheets/new'
-  get 'timesheets/create'
+  get 'timesheets/home'
   get 'timesheets/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
