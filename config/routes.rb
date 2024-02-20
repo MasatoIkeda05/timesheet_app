@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "timesheets#home"
+  #userごとのURLを利用する
+  resources :users
 end
