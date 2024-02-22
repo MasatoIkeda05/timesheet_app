@@ -110,6 +110,8 @@ GEM
       ruby2_keywords
     e2mmap (0.1.0)
     erubi (1.12.0)
+    faker (3.2.3)
+      i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
     formatador (1.1.0)
     globalid (1.2.1)
@@ -351,6 +353,7 @@ DEPENDENCIES
   bootsnap (= 1.16.0)
   capybara (= 3.38.0)
   debug (= 1.7.1)
+  faker
   guard (= 2.18.0)
   guard-minitest (= 2.4.6)
   importmap-rails (= 1.1.5)
