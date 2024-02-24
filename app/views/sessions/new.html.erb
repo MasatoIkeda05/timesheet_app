@@ -3,6 +3,12 @@
 
 <%= form_for(:session, url: login_path) do |f| %>
 
+  <% if flash.now[:danger] %>
+    <div class="alert alert-danger">
+      <%= flash.now[:danger] %>
+    </div>
+  <% end %>
+
   <%= f.label :email %>
   <%= f.email_field :email %>
 
@@ -12,6 +18,6 @@
   <%= f.submit "Log in" %>
 <% end %>
 
-<p>if you are owner?⇨ <%= link_to "create new member", signup_path %></p>
+<p>if you aer owner? <%= link_to "Sign up now!", signup_path %></p>
 
 
