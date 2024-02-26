@@ -1,4 +1,4 @@
 <%= @user.name %>
 
-<button class="favorite styled" type="button">出勤</button>
-<button class="favorite styled" type="button">退勤</button>
+<%= button_to "出勤", {controller: 'workingtimes', action: 'check_in'}, {method: :post} %>
+<%= button_to "退勤", {controller: 'workingtimes', action: 'check_out'},  {method: :patch} %>
