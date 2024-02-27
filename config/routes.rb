@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'workingplaces/new'
   get 'sessions/new'
   get 'signup' => 'users#new'
   get 'index'  => 'timesheets#index'
