@@ -1,13 +1,13 @@
 <% provide(:title, "Log in") %>
 <h1>Log in</h1>
 
-<%= form_for(:session, url: login_path) do |f| %>
+<% flash.each do |key, value| %>
+  <div>
+    <%= value %>
+  </div>
+<% end %>
 
-  <% if flash.now[:danger] %>
-    <div class="alert alert-danger">
-      <%= flash.now[:danger] %>
-    </div>
-  <% end %>
+<%= form_for(:session, url: login_path) do |f| %>
 
   <%= f.label :email %>
   <%= f.email_field :email %>
