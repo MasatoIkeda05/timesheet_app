@@ -2,12 +2,20 @@ class WorkingtimesController < ApplicationController
   before_action :logged_in_user, only: [:check_in, :check_out]
 
   def check_in
-    @workingtimes = current_user.workingtimes.build(check_in: Time.now)
-    if @workingtimes.save
-      flash[:success] = '出勤しました。'
+    if Workingtime.can_check_in?(current_user)
+      ActiveRecord::Base.transaction do
+        @workingtime = current_user.workingtimes.build
+        @workingtime.check_in = Time.now
+        if @workingtime.save
+          flash[:success] = '出勤しました。'
+        else
+          flash[:danger] = '出勤情報を保存できませんでした。'
+        end
+      end
     else
-      flash[:danger] = '出勤情報を保存できませんでした。'
+      flash[:danger] = 'すでに出勤しています'
     end
+    redirect_to root_path
   end
 
   def check_out
