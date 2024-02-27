@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'workingplaces/new'
-  get 'sessions/new'
+  get 'new_place' => 'working_places#new'
   get 'signup' => 'users#new'
   get 'index'  => 'timesheets#index'
   get    'login'   => 'sessions#new'
@@ -20,4 +19,5 @@ Rails.application.routes.draw do
 
   #userごとのURLを利用する
   resources :users
+  resources :working_places
 end

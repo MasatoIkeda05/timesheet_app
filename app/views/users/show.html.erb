@@ -2,3 +2,9 @@
 
 <%= button_to "出勤", {controller: 'workingtimes', action: 'check_in'}, {method: :post} %>
 <%= button_to "退勤", {controller: 'workingtimes', action: 'check_out'},  {method: :patch} %>
+
+<p>管理者メニュー</p>
+<p>
+  <%= link_to "新しいスタッフの追加", signup_path %>
+  <%= link_to "新しい勤務地の追加", new_place_path %>
+</p>
