@@ -1,6 +1,10 @@
 <%= @user.name %>
 
-<%= button_to "出勤", {controller: 'workingtimes', action: 'check_in'}, {method: :post} %>
+<%= form_with(model: @workingtime, url: check_in_path(@workingtime), method: :post) do |form| %>
+  <p><%= form.collection_select :working_place_id, WorkingPlace.all, :id, :place, prompt: "勤務地を選択してください。", class: 'form-control' %></p>
+  <%= form.submit "出勤" %>
+<% end %>
+
 <%= button_to "退勤", {controller: 'workingtimes', action: 'check_out'},  {method: :patch} %>
 
 <p>管理者メニュー</p>
