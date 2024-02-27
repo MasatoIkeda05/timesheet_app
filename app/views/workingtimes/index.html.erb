@@ -1,0 +1,26 @@
+<!-- app/views/workingtimes/index.html.erb -->
+
+<h1>勤怠状況一覧</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>User ID</th>
+    <th>Working Place ID</th>
+    <th>Check In</th>
+    <th>Check Out</th>
+    <th>working_min</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @workingtimes.each do |workingtime| %>
+    <tr>
+      <td><%= workingtime.user_id %></td>
+      <td><%= workingtime.working_place_id %></td>
+      <td><%= workingtime.check_in %></td>
+      <td><%= workingtime.check_out %></td>
+      <td><%= workingtime.working_min %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
