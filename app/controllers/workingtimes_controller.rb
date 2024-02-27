@@ -12,12 +12,15 @@ class WorkingtimesController < ApplicationController
 
   def check_out
     @workingtimes = current_user.workingtimes.last
-    if @workingtimes&& @workingtimes.update(check_out: Time.now)
+    if @workingtimes && @workingtimes.check_out.nil? && @workingtimes.update(check_out: Time.now)
       calculate_working_min(@workingtimes)
       flash[:success] = '退勤しました。'
+    elsif @workingtimes.check_out.present?
+      flash[:danger] = 'すでに退勤しています。'
     else
-      flash[:danger] = '退勤情報を保存できませんでした。'
+      flash[:danger] = '勤怠情報を取得できませんでした。'
     end
+    redirect_to root_path
   end
 
   private
