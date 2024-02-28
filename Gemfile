@@ -12,7 +12,6 @@ gem "stimulus-rails",  "1.2.1"
 gem "jbuilder",        "2.11.5"
 gem "puma",            "6"
 gem "bootsnap",        "1.16.0", require: false
-gem "sqlite3",         "1.6.1"
 gem 'bcrypt', '~> 3.1.16'
 gem 'faker'
 
