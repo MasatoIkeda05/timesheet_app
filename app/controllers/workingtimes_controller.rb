@@ -5,10 +5,9 @@ class WorkingtimesController < ApplicationController
   def check_in
     if Workingtime.can_check_in?(current_user)
       ActiveRecord::Base.transaction do
-        # ドロップダウンメニューからのデータを直接取得
-        working_place_id = params[:working_place_id]
 
-        # フォームからのデータを元にWorkingTimeインスタンスを作成
+        #TODO:エラーが発生するためストロングパラメータで取得ができていない
+        working_place_id = params[:working_place_id]
         @workingtime = Workingtime.new(
           user_id: current_user.id,
           working_place_id: working_place_id,
@@ -16,7 +15,7 @@ class WorkingtimesController < ApplicationController
         )
 
         if @workingtime.save
-          flash[:success] = '出勤しました。退勤するにはもう一度ログインが必要です。'
+          flash[:success] = '出勤しました。退勤するにはもう一度ログインしてください。'
         else
           flash[:danger] = '出勤情報を保存できませんでした。'
         end
