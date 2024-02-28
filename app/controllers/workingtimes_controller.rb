@@ -42,7 +42,11 @@ class WorkingtimesController < ApplicationController
   end
 
   def index
-    @workingtimes = Workingtime.all
+    if params[:working_place_id].present?
+      @workingtimes = Workingtime.where(working_place_id: params[:working_place_id])
+    else
+      @workingtimes = Workingtime.all
+    end
   end
 
 
