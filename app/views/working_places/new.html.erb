@@ -15,3 +15,27 @@
 
   <%= f.submit "新しい勤務地を登録する", class: "btn btn-primary" %>
 <% end %>
+
+<!-- app/views/workingtimes/index.html.erb -->
+
+<h4>現在登録されている勤務地の一覧</h4>
+
+<table border="1" >
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Place</th>
+    <th>Wage</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @working_places.each do |working_place| %>
+    <tr>
+      <td><%= working_place.id %></td>
+      <td><%= working_place.place %></td>
+      <td><%= working_place.wage %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

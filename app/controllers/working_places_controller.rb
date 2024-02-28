@@ -3,6 +3,7 @@ class WorkingPlacesController < ApplicationController
 
   def new
     @working_place = WorkingPlace.new
+    @working_places = WorkingPlace.all
   end
 
   def create
