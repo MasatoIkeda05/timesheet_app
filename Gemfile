@@ -17,6 +17,7 @@ gem 'bcrypt', '~> 3.1.16'
 gem 'faker'
 
 group :development, :test do
+  gem "sqlite3",         "1.6.1"
   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
 end
 
@@ -36,4 +37,8 @@ group :test do
   gem "minitest-reporters",       "1.6.0"
   gem "guard",                    "2.18.0"
   gem "guard-minitest",           "2.4.6"
+end
+
+group :production do
+  gem 'pg'
 end
