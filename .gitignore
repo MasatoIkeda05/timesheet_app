@@ -35,4 +35,4 @@
 /config/master.key
 
 #Ignore .idea
-.idea
+/.idea
