@@ -18,13 +18,7 @@ $ bundle install
 $ rails db:migrate
 ```
 
-最後に、テストを実行してうまく動いているかどうか確認してください。
-
-```
-$ rails test
-```
-
-テストが無事にパスしたら、Railsサーバーを立ち上げる準備が整っているはずです。
+Railsサーバーを立ち上げることができます。
 
 ```
 $ rails server
