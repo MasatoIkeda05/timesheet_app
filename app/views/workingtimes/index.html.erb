@@ -2,6 +2,11 @@
 
 <h1>勤怠状況一覧</h1>
 
+<%= form_tag @workingtimes_path, method: :get do %>
+  <%= select_tag :working_place_id, options_from_collection_for_select(WorkingPlace.all, :id, :place), include_blank: true %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <table border="1" >
   <thead>
   <tr>
