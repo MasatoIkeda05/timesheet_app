@@ -1,4 +1,6 @@
 class WorkingPlacesController < ApplicationController
+  before_action :admin_user, only: [:new, :create]
+
   def new
     @working_place = WorkingPlace.new
   end
