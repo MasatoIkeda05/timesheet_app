@@ -1,5 +1,6 @@
 class WorkingtimesController < ApplicationController
-  before_action :logged_in_user, only: [:check_in, :check_out]
+  before_action :logged_in_user, only: [:check_in, :check_out, :index]
+  before_action :admin_user, only: [:index]
 
   def check_in
     if Workingtime.can_check_in?(current_user)
@@ -15,7 +16,7 @@ class WorkingtimesController < ApplicationController
         )
 
         if @workingtime.save
-          flash[:success] = '出勤しました。'
+          flash[:success] = '出勤しました。退勤するにはもう一度ログインが必要です。'
         else
           flash[:danger] = '出勤情報を保存できませんでした。'
         end
@@ -23,6 +24,7 @@ class WorkingtimesController < ApplicationController
     else
       flash[:danger] = 'すでに出勤しています'
     end
+    log_out
     redirect_to root_path
   end
 
@@ -36,6 +38,7 @@ class WorkingtimesController < ApplicationController
     else
       flash[:danger] = '勤怠情報を取得できませんでした。'
     end
+    log_out
     redirect_to root_path
   end
 
