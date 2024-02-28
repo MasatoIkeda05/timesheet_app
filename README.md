@@ -1,24 +1,32 @@
 # README
+勤怠管理アプリケーションです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## 使い方
 
-* Ruby version
+このアプリケーションを動かす場合は、まずはリポジトリを手元にクローンしてください。
+その後、次のコマンドで必要になる RubyGems をインストールします。
 
-* System dependencies
+```
+$ gem install bundler -v 2.4.19
+$ bundle install
+```
 
-* Configuration
+その後、データベースへのマイグレーションを実行します。
 
-* Database creation
+```
+$ rails db:migrate
+```
 
-* Database initialization
+最後に、テストを実行してうまく動いているかどうか確認してください。
 
-* How to run the test suite
+```
+$ rails test
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+テストが無事にパスしたら、Railsサーバーを立ち上げる準備が整っているはずです。
 
-* Deployment instructions
+```
+$ rails server
+```
 
-* ...
