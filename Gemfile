@@ -10,10 +10,9 @@ gem "importmap-rails", "1.1.5"
 gem "turbo-rails",     "1.4.0"
 gem "stimulus-rails",  "1.2.1"
 gem "jbuilder",        "2.11.5"
-gem "puma",            "6"
+gem "puma",            "6.0.0"
 gem "sqlite3",         "1.6.1"
-gem 'bcrypt', '~> 3.1.16'
-gem 'faker'
+gem 'bootsnap', require: false
 
 group :development, :test do
   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
