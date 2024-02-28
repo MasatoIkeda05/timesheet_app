@@ -1,0 +1,17 @@
+<h1>勤務地の追加</h1>
+
+<% flash.each do |key, value| %>
+  <div>
+    <%= value %>
+  </div>
+<% end %>
+
+<%= form_for(@working_place) do |f| %>
+  <%= f.label :勤務地 %>
+  <%= f.text_field :place %>
+
+  <%= f.label :時給 %>
+  <%= f.number_field :wage %>
+
+  <%= f.submit "新しい勤務地を登録する", class: "btn btn-primary" %>
+<% end %>

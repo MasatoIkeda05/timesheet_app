@@ -4,8 +4,16 @@ class WorkingtimesController < ApplicationController
   def check_in
     if Workingtime.can_check_in?(current_user)
       ActiveRecord::Base.transaction do
-        @workingtime = current_user.workingtimes.build
-        @workingtime.check_in = Time.now
+        # ドロップダウンメニューからのデータを直接取得
+        working_place_id = params[:working_place_id]
+
+        # フォームからのデータを元にWorkingTimeインスタンスを作成
+        @workingtime = Workingtime.new(
+          user_id: current_user.id,
+          working_place_id: working_place_id,
+          check_in: Time.now
+        )
+
         if @workingtime.save
           flash[:success] = '出勤しました。'
         else
@@ -31,8 +39,16 @@ class WorkingtimesController < ApplicationController
     redirect_to root_path
   end
 
+  def index
+    @workingtimes = Workingtime.all
+  end
+
+
   private
 
+  def workingtime_params
+    params.require(:workingtime).permit(:check_in, :check_out, :working_place_id, :working_min, :month, :user_id, :working_now)
+  end
   def calculate_working_min(workingtimes)
     if workingtimes.check_in.present? && workingtimes.check_out.present?
       working_minutes = ((workingtimes.check_out - workingtimes.check_in) / 60).to_i
