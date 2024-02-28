@@ -85,8 +85,6 @@ GEM
     benchmark (0.3.0)
     bigdecimal (3.1.6)
     bindex (0.8.1)
-    bootsnap (1.16.0)
-      msgpack (~> 1.2)
     builder (3.2.4)
     capybara (3.38.0)
       addressable
@@ -170,7 +168,6 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    msgpack (1.7.2)
     mutex_m (0.2.0)
     nenv (0.3.0)
     net-imap (0.4.10)
@@ -351,7 +348,6 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.16)
-  bootsnap (= 1.16.0)
   capybara (= 3.38.0)
   debug (= 1.7.1)
   faker
@@ -381,4 +377,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.19
+   2.5.6
