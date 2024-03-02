@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  #workingtimesと関連づける
-  has_many :workingtimes
+  has_many :time_sheets
 
   #バリデーション
   before_save { self.email = email.downcase }

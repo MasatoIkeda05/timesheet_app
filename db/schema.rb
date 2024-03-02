@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_27_134818) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_02_105514) do
+  create_table "time_sheets", force: :cascade do |t|
+    t.datetime "check_in"
+    t.datetime "check_out"
+    t.integer "working_min"
+    t.integer "month"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "working_now", default: false
+    t.integer "working_place_id"
+    t.index ["user_id"], name: "index_time_sheets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -44,20 +57,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_27_134818) do
     t.index ["place"], name: "index_working_places_on_place", unique: true
   end
 
-  create_table "workingtimes", force: :cascade do |t|
-    t.datetime "check_in"
-    t.datetime "check_out"
-    t.integer "working_min"
-    t.integer "month"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "working_now", default: false
-    t.integer "working_place_id"
-    t.index ["user_id"], name: "index_workingtimes_on_user_id"
-  end
-
+  add_foreign_key "time_sheets", "users"
   add_foreign_key "working_data", "users"
   add_foreign_key "working_data", "working_places"
-  add_foreign_key "workingtimes", "users"
 end
