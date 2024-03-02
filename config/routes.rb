@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  post   'check_in'  => 'workingtimes#check_in'
-  patch  'check_out' => 'workingtimes#check_out'
-  get    'index'     => 'workingtimes#index'
+  post   'check_in'  => 'time_sheets#check_in'
+  patch  'check_out' => 'time_sheets#check_out'
+  get    'index'     => 'time_sheets#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

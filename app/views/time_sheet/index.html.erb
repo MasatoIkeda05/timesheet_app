@@ -1,8 +1,6 @@
-<!-- app/views/workingtimes/index.html.erb -->
-
 <h1>勤怠状況一覧</h1>
 
-<%= form_tag @workingtimes_path, method: :get do %>
+<%= form_tag @time_sheet_path, method: :get do %>
   <%= select_tag :working_place_id, options_from_collection_for_select(WorkingPlace.all, :id, :place), include_blank: true %>
   <%= submit_tag "Search" %>
 <% end %>
@@ -18,13 +16,13 @@
   </tr>
   </thead>
   <tbody>
-  <% @workingtimes.each do |workingtime| %>
+  <% @time_sheets.each do |time_sheet| %>
     <tr>
-      <td><%= workingtime.user_id %></td>
-      <td><%= workingtime.check_in %></td>
-      <td><%= workingtime.check_out %></td>
-      <td><%= workingtime.working_place_id %></td>
-      <td><%= workingtime.working_min %></td>
+      <td><%= time_sheet.user_id %></td>
+      <td><%= time_sheet.check_in %></td>
+      <td><%= time_sheet.check_out %></td>
+      <td><%= time_sheet.working_place_id %></td>
+      <td><%= time_sheet.working_min %></td>
     </tr>
   <% end %>
   </tbody>
