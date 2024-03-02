@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @workingtime = Workingtime.new
   end
 
   def create

@@ -8,11 +8,7 @@ class WorkingtimesController < ApplicationController
 
         #TODO:エラーが発生するためストロングパラメータで取得ができていない
         working_place_id = params[:working_place_id]
-        @workingtime = Workingtime.new(
-          user_id: current_user.id,
-          working_place_id: working_place_id,
-          check_in: Time.now
-        )
+        @workingtime = Workingtime.new(:workingtime_params)
 
         if @workingtime.save
           flash[:success] = '出勤しました。退勤するにはもう一度ログインしてください。'
@@ -55,6 +51,7 @@ class WorkingtimesController < ApplicationController
   def workingtime_params
     params.require(:workingtime).permit(:check_in, :check_out, :working_place_id, :working_min, :month, :user_id, :working_now)
   end
+
   def calculate_working_min(workingtimes)
     if workingtimes.check_in.present? && workingtimes.check_out.present?
       working_minutes = ((workingtimes.check_out - workingtimes.check_in) / 60).to_i
