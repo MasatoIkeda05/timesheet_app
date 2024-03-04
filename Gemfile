@@ -29,10 +29,9 @@ end
 group :test do
   gem "capybara",                 "3.38.0"
   gem "selenium-webdriver",       "4.8.3"
-  gem "webdrivers",               "5.2.0"
-  gem "rails-controller-testing", "1.0.5"
-  gem "minitest",                 "5.18.0"
-  gem "minitest-reporters",       "1.6.0"
+  gem 'webdrivers'
+  gem "rspec-rails",              "~> 6.1"
   gem "guard",                    "2.18.0"
-  gem "guard-minitest",           "2.4.6"
+  gem 'guard-rspec', require: false
+  gem "factory_bot_rails"
 end

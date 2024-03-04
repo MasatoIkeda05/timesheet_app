@@ -1,11 +1,12 @@
+<h1>勤怠登録</h1>
 <%= @user.name %>
 
-<%= form_with(model: @workingtimes, url: check_in_path(@workingtime), method: :post) do |form| %>
+<%= form_with(model: @time_sheet, url: check_in_path(@time_sheet), method: :post) do |form| %>
   <p><%= form.collection_select :working_place_id, WorkingPlace.all, :id, :place, prompt: "勤務地を選択してください。", class: 'form-control' %></p>
   <%= form.submit "出勤" %>
 <% end %>
 
-<%= button_to "退勤", {controller: 'workingtimes', action: 'check_out'},  {method: :patch} %>
+<%= button_to "退勤", {controller: 'time_sheets', action: 'check_out'},  {method: :patch} %>
 
 <% if current_user.admin? %>
   <hr>
