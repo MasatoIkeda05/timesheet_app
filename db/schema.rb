@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_02_105514) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_04_063617) do
   create_table "time_sheets", force: :cascade do |t|
     t.datetime "check_in"
     t.datetime "check_out"
@@ -34,21 +34,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_02_105514) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "working_data", force: :cascade do |t|
-    t.datetime "check_in"
-    t.datetime "check_out"
-    t.integer "working_min"
-    t.integer "month"
-    t.integer "salary"
-    t.boolean "working_now", default: false
-    t.integer "user_id", null: false
-    t.integer "working_place_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_working_data_on_user_id"
-    t.index ["working_place_id"], name: "index_working_data_on_working_place_id"
-  end
-
   create_table "working_places", force: :cascade do |t|
     t.string "place"
     t.integer "wage"
@@ -58,6 +43,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_02_105514) do
   end
 
   add_foreign_key "time_sheets", "users"
-  add_foreign_key "working_data", "users"
-  add_foreign_key "working_data", "working_places"
 end

@@ -17,7 +17,7 @@ class TimeSheetsController < ApplicationController
         if @time_sheet.save
           flash[:success] = '出勤しました。退勤するにはもう一度ログインしてください。'
         else
-          flash[:danger] = '出勤情報を保存できませんでした。'
+          flash[:danger] = '勤務地を登録してください'
         end
       end
     else
@@ -44,11 +44,10 @@ class TimeSheetsController < ApplicationController
   def index
     if params[:working_place_id].present?
       @time_sheets = TimeSheet.where(working_place_id: params[:working_place_id])
-    else
+    else 
       @time_sheets = TimeSheet.all
     end
   end
-
 
   private
 
@@ -60,6 +59,7 @@ class TimeSheetsController < ApplicationController
     if time_sheets.check_in.present? && time_sheets.check_out.present?
       working_minutes = ((time_sheets.check_out - time_sheets.check_in) / 60).to_i
       time_sheets.update(working_min: working_minutes)
+
     end
   end
 end

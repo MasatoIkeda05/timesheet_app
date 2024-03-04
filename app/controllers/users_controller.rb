@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @time_sheet = TimeSheet.new
   end
 
   def create
